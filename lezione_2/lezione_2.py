@@ -40,3 +40,48 @@ name: str = "Vincent Van Gogh"
 message: str = f"{name} una vota disse:\"{quote}\""
 
 print(message)
+
+"""
+2-6. Famous Quote 2: Repeat Exercise 2-5, but this time, represent the famous person’s name using a variable called famous_person. 
+Then compose your message and represent it with a new variable called message. Print your message. 
+"""
+#Questa variabile ha cambiato nome ma non funzione
+
+famous_name: str = name
+print(message)
+
+"""
+2-8. File Extensions: Python has a removesuffix() method that works exactly like removeprefix(). 
+Assign the value 'python_notes.txt' to a variable called filename. 
+Then use the removesuffix() method to display the filename without the file extension, like some file browsers do.
+"""
+
+#Questa variabile rimuove un suffisso
+
+filename: str = 'python_notes.txt'
+
+newfilename = filename.removesuffix('.txt')
+print(newfilename)
+
+"""
+3-1. Names: Store the names of a few of your friends in a list called names. 
+Print each person’s name by accessing each element in the list, one at a time.
+"""
+
+friends_name: list = ["Mario", "Giovanni", "Sara"]
+
+print(friends_name[0], friends_name[1], friends_name[2])
+
+"""
+3-2. Greetings: Start with the list you used in Exercise 3-1, but instead of just printing each person’s name, print a message to them. 
+The text of each message should be the same, but each message should be personalized with the person’s name.
+"""
+
+message_1: str = f"Ciao {friends_name[0]}, fammi sapere per la cena di domani!"
+message_2: str = f"Ciao {friends_name[1]}, fammi sapere per la cena di domani"
+message_3: str = f"Ciao {friends_name[2]}, fammi sapere per la cena di domani"
+
+print(message_1)
+print(message_2)
+print(message_3)
+
