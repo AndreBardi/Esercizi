@@ -25,3 +25,18 @@ name_lower: str = name.lower()
 name_upper: str = name.upper()
 
 print(f"{name}, {name.upper()}, {name.lower()}")
+
+"""
+2-5. Famous Quote: Find a quote from a famous person you admire. 
+Print the quote and the name of its author. Your output should look something like the following, including the quotation marks:
+Albert Einstein once said, “A person who never made a mistake never tried anything new.”
+
+"""
+
+#Questa variabile mostra una citazione
+
+quote: str = "Faccio sempre ciò che non so fare, per imparare come va fatto."
+name: str = "Vincent Van Gogh"
+message: str = f"{name} una vota disse:\"{quote}\""
+
+print(message)
