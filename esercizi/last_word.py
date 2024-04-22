@@ -12,5 +12,5 @@ def len_of_last_word(s: str) -> int:
         else:
             break
         i += 1
-    return curr_len
+    return
 """
