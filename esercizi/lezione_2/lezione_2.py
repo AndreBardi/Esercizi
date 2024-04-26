@@ -195,3 +195,166 @@ guest_list.pop(4)
 guest_list.pop(5)
 
 print(guest_list)
+
+
+"""
+3-8. Seeing the World: Think of at least five places in the world you’d like to visit.
+• Store the locations in a list. Make sure the list is not in alphabetical order.
+• Print your list in its original order. Don’t worry about printing the list neatly; just print it as a raw Python list.
+• Use sorted() to print your list in alphabetical order without modifying the actual list.
+• Show that your list is still in its original order by printing it.
+• Use sorted() to print your list in reverse-alphabetical order without changing the order of the original list.
+• Show that your list is still in its original order by printing it again.
+• Use reverse()  to change the order of your list. Print the list to show that its order has changed.
+• Use reverse() to change the order of your list again. Print the list to show it’s back to its original order.
+• Use sort() to change your list so it’s stored in alphabetical order. Print the list to show that its order has been changed.
+• Use sort() to change your list so it’s stored in reverse-alphabetical order.
+Print the list to show that its order has changed.
+"""
+
+dream_places: list = ["Japan", "Canada", "Finland", "Switzerland", "USA"]
+print(dream_places)
+
+sorted(dream_places[1: 5])
+print(dream_places)
+
+sorted(dream_places[5: -1])
+print(dream_places)
+
+dream_places.reverse()
+print(dream_places)
+
+dream_places.reverse()
+print(dream_places)
+
+dream_places.sort()
+print(dream_places)
+
+dream_places.sort(reverse=True)
+print(dream_places)
+
+
+
+"""
+3-9. Dinner Guests: Working with one of the programs from Exercises 3, use len() 
+to print a message indicating the number of people you’re inviting to dinner.
+"""
+
+x = len(guest_list)
+print("The number of guests is", x)
+
+
+"""
+3-10. Every Function: Think of things you could store in a list. 
+For example, you could make a list of mountains, rivers, countries, cities, languages, or anything else you’d like. 
+Write a program that creates a list containing these items and then uses each function introduced in this chapter at least once.
+"""
+
+food_list = ["pizza", "burger", "sushi", "pasta", "salad", "taco", "sandwich", "steak"]
+
+food1: str = f"What do you want for dinner? {food_list[0]} or {food_list[2]}?"
+food2: str = f"I'd like some {food_list[1]}, but i'm craving for some {food_list[3]}!!"
+food3: str = f"What should i bring for lunch at work, a {food_list[5]} or a {food_list[6]}?"
+food4: str = f"For lunch, I'll cook some {food_list[7]} with a side dish of {food_list[4]}"
+
+for i in range(len(food_list)):
+    print(food1)
+    print(food2)
+    print(food3)
+    print(food4)
+    break
+
+
+food_list.pop(4)
+food_list.insert(4, "fries")
+food5: str = f"For lunch, I'll cook some {food_list[7]} with a side dish of {food_list[4]}"
+
+print(food_list)
+
+for i in range(len(food_list)):
+    print(food5)
+    break
+
+
+"""
+6-1. Person: Use a dictionary to store information about a person you know. 
+Store their first name, last name, age, and the city in which they live. 
+You should have keys such as first_name, last_name, age, and city. Print each piece of information stored in your dictionary.
+"""
+
+profile =	{
+  "first_name": "Marco",
+  "last_name": "De Stefano",
+  "age": 19,
+  "city": "Rome"
+
+}
+
+for x in profile:
+    print(profile[x])
+
+
+"""
+6-2. Favorite Numbers: Use a dictionary to store people’s favorite numbers. 
+  Think of five names, and use them as keys in your dictionary. 
+  Think of a favorite number for each person, and store each as a value in your dictionary. 
+  Print each person’s name and their favorite number. 
+For even more fun, poll a few friends and get some actual data for your program.
+"""
+
+
+profile1 =	{
+  "name": "Marco",
+  "fav_number": 69
+}
+
+profile2 =	{
+  "name": "Giovanni",
+  "fav_number": 42
+}
+
+profile3 =	{
+  "name": "Manuel",
+  "fav_number": 33
+}
+
+profile4 =	{
+  "name": "Emauele",
+  "fav_number": 90
+}
+
+profile5 =	{
+  "name": "Elia",
+  "fav_number": 29
+}
+
+
+
+for x in profile1:
+    print(profile1[x])
+
+for x in profile2:
+    print(profile2[x])
+
+for x in profile3:
+    print(profile3[x])
+
+for x in profile4:
+    print(profile4[x])
+    
+for x in profile5:
+    print(profile5[x])
+
+
+"""
+6-3. Glossary: A Python dictionary can be used to model an actual dictionary. However, to avoid confusion, let’s call it a glossary.
+• Think of five programming words you’ve learned about in the previous chapters. Use these words as the keys in your glossary, and store their meanings as values.
+• Print each word and its meaning as neatly formatted output. 
+You might print the word followed by a colon and then its meaning, or print the word on one line and then print its meaning indented on a second line. 
+Use the newline character (\n) to insert a blank line between each word-meaning pair in your output.
+"""
+
+glossary_dict: dict = {
+    
+
+}
