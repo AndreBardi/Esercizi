@@ -305,27 +305,27 @@ For even more fun, poll a few friends and get some actual data for your program.
 
 profile1 =	{
   "name": "Marco",
-  "fav_number": 69
+  "fav_number": [69]
 }
 
 profile2 =	{
   "name": "Giovanni",
-  "fav_number": 42
+  "fav_number": [42]
 }
 
 profile3 =	{
   "name": "Manuel",
-  "fav_number": 33
+  "fav_number": [33]
 }
 
 profile4 =	{
   "name": "Emauele",
-  "fav_number": 90
+  "fav_number": [90]
 }
 
 profile5 =	{
   "name": "Elia",
-  "fav_number": 29
+  "fav_number": [29]
 }
 
 
@@ -354,7 +354,236 @@ You might print the word followed by a colon and then its meaning, or print the 
 Use the newline character (\n) to insert a blank line between each word-meaning pair in your output.
 """
 
-glossary_dict: dict = {
+pop_glossary_dict: dict = {
     
-
+  "name": ".pop()",
+  "function": "It's used to remove and return the item at a specified index (by default, the last item) from a list\n"
 }
+
+len_glossary_dict: dict = {
+    
+  "name": "len()",
+  "function": "It's used to return the length of an object, such as a string, tuple, list, or range\n"
+}
+
+print_glossary_dict: dict = {
+    
+  "name": "print()",
+  "function": "It's used to output data or a specified message to the screen, or other standard output device\n"
+}
+
+append_glossary_dict: dict = {
+    
+  "name": ".append()",
+  "function": "It's used to add an element at the end of the list\n"
+}
+
+sort_glossary_dict: dict = {
+    
+  "name": "sort()",
+  "function": "It's used to sort the list ascending (by default)"
+}
+
+for x in pop_glossary_dict:
+  print(pop_glossary_dict[x])
+"\n"
+for x in len_glossary_dict:
+  print(len_glossary_dict[x])
+"\n"
+for x in print_glossary_dict: 
+  print(print_glossary_dict[x])
+"\n"
+for x in append_glossary_dict: 
+  print(append_glossary_dict[x])
+"\n"
+for x in sort_glossary_dict: 
+  print(sort_glossary_dict[x])
+
+"""
+6-7. People: Start with the program you wrote for Exercise 6-1. 
+Make two new dictionaries representing different people, and store all three dictionaries in a list called people. 
+Loop through your list of people. As you loop through the list, print everything you know about each person.
+"""
+people: list = []
+
+friend1 =	{
+  "first_name": "Marco",
+  "last_name": "De Stefano",
+  "age": 19,
+  "city": "Rome"
+}
+
+friend2 = {
+    "first_name": "Giovanni",
+  "last_name": "Di Giuseppe",
+  "age": 21,
+  "city": "Rome"
+}
+friend3 = {
+    "first_name": "Damiano",
+  "last_name": "Liberati",
+  "age": 19,
+  "city": "Zurich"
+}
+
+people.append(friend1)
+people.append(friend2)
+people.append(friend3)
+
+for i in people:
+   print("Name:", i["first_name"])
+   print("Last Name:", i["last_name"])
+   print("Age:", i["age"])
+   print("City:", i["city"])
+
+"""
+6-8. Pets: Make several dictionaries, where each dictionary represents a different pet. 
+In each dictionary, include the kind of animal and the owner’s name. Store these dictionaries in a list called pets. 
+Next, loop through your list and as you do, print everything you know about each pet.
+"""
+
+pets: list = []
+
+pet1 = {
+      
+   "name": "Isotta",
+   "animal": "dog",
+   "owner": "Andrea"
+}
+
+pet2 = {
+   
+  "name": "Simba",
+  "animal": "cat",
+  "owner": "Riccardo"
+}
+
+pet3 = {
+   
+   "name": "Jack",
+   "animal": "gekko",
+   "owner": "Marco"
+}
+
+pets.append(pet1)
+pets.append(pet2)
+pets.append(pet3)
+
+for i in pets:
+   print("Name:", i["name"])
+   print("Species:", i["animal"])
+   print("Owner's pet:", i["owner"])
+   
+
+"""
+6-9. Favorite Places: Make a dictionary called favorite_places. 
+Think of three names to use as keys in the dictionary, and store one to three favorite places for each person. 
+To make this exercise a bit more interesting, ask some friends to name a few of their favorite places. 
+Loop through the dictionary, and print each person’s name and their favorite places.
+"""
+
+favourite_places: list = []
+
+friends_favourite_places: dict = {
+   "name": "Marco",
+   "places": "America and Switzerland",
+   "name2": "Andrea",
+   "places2": "Ireland and Australia",
+   "name3": "Damiano",
+   "places3": "Japan and Germany"
+}
+
+favourite_places.append(friends_favourite_places)
+
+for i in favourite_places:
+   print("Name:", i["name"])
+   print("Dream places:", i["places"])   
+   print("Name:", i["name2"])
+   print("Dream places:", i["places2"])
+   print("Name:", i["name3"])
+   print("Dream places:", i["places3"])
+   
+   """
+   6-10. Favorite Numbers: Modify your program from Exercise 6-2 so each person can have more than one favorite number. 
+   Then print each person’s name along with their favorite numbers.
+   """
+add_numb1 = 57
+add_numb2 = 62
+add_numb3 = 23
+add_numb4 = 15
+add_numb5 = 2
+
+profile1["fav_number"].append(add_numb1)
+profile2["fav_number"].append(add_numb2)
+profile3["fav_number"].append(add_numb3)
+profile4["fav_number"].append(add_numb4)
+profile5["fav_number"].append(add_numb5)
+
+for x in profile1:
+    print(profile1[x])
+
+for x in profile2:
+    print(profile2[x])
+
+for x in profile3:
+    print(profile3[x])
+
+for x in profile4:
+    print(profile4[x])
+    
+for x in profile5:
+    print(profile5[x])
+
+"""
+6-11. Cities: Make a dictionary called cities. Use the names of three cities as keys in your dictionary. 
+Create a dictionary of information about each city and include the country that the city is in, 
+its approximate population, and one fact about that city. 
+The keys for each city’s dictionary should be something like country, population, and fact. 
+Print the name of each city and all of the information you have stored about it.
+"""
+
+cities = {
+    "New York": {
+        "country": "USA",
+        "population": 8398748,  
+        "fact": "New York City is home to the Statue of Liberty."
+    },
+    "Tokyo": {
+        "country": "Japan",
+        "population": 37393129,  
+        "fact": "Tokyo is the most populous metropolitan area in the world."
+    },
+    "London": {
+        "country": "UK",
+        "population": 9304016,  
+        "fact": "London's underground system is the oldest in the world."
+    }
+}
+
+for city, info in cities.items():
+    print("City:", city)
+    print("Country:", info["country"])
+    print("Population:", info["population"])
+    print("Fact:", info["fact"])
+
+"""
+6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways. 
+Use one of the example programs from this chapter, and extend it by adding new keys and values, 
+changing the context of the program, or improving the formatting of the output.
+"""
+friend1["foods"] = "Potato Chips"
+friend2["foods"] = "Hamburger"
+friend3["foods"] = "Coca-cola"
+
+
+for i in range(len(people)):
+   print(f"In this list, there are exactly {len(people)} people")
+   break
+
+for i in people:
+   print("Name:", i["first_name"])
+   print("Last Name:", i["last_name"])
+   print("Age:", i["age"])
+   print("City:", i["city"])
+   print("Fav Foods:", i["foods"])
+
