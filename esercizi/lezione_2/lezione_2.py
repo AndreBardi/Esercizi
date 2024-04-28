@@ -185,7 +185,7 @@ print("---------------------------------------")
 • Use del to remove the last two names from your list, so you have an empty list. 
   Print your list to make sure you actually have an empty list at the end of your program.
 """
-everyone: str = f"Dear {guest_list}, sadly i have to announce that i can only have two guests at my dinner. Sinceere apoogies."
+everyone: str = f"Dear {guest_list}, sadly i have to announce that i can only have two guests at my dinner. Sinceere apologies."
 print(everyone)
 
 guest_list.pop(0)
@@ -215,10 +215,10 @@ Print the list to show that its order has changed.
 dream_places: list = ["Japan", "Canada", "Finland", "Switzerland", "USA"]
 print(dream_places)
 
-sorted(dream_places[1: 5])
+print(sorted(dream_places))
 print(dream_places)
 
-sorted(dream_places[5: -1])
+print(sorted(dream_places, reverse=True))
 print(dream_places)
 
 dream_places.reverse()
