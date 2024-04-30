@@ -12,3 +12,8 @@ def is_palindrome(x : int) -> bool:
 
     return True
 print(is_palindrome(32323))
+
+#def subtract (x : int, y : int):
+#    z:int = x-y
+#    return z
+#print(subtract(10,5))
