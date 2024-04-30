@@ -2,7 +2,6 @@
 8-1. Message: Write a function called display_message() that prints one sentence telling everyone what you are learning about in this chapter. 
 Call the function, and make sure the message displays correctly.
 """
-
 def display_message() -> str:
 
         print("In this chapter, we are learning about python")
@@ -102,16 +101,160 @@ print(album3)
 {'artist': 'Rihanna', 'title': 'ANTI', 'number_of_songs': 16}
 print("---------------------------------------")
 
+"""
+8-8. User Albums: Start with your program from Exercise 8-7. Write a while loop that allows users to enter an album’s artist and title. 
+Once you have that information, call make_album() with the user’s input and print the dictionary that’s created. 
+Be sure to include a quit value in the while loop.
+"""
+
+"""def make_album(artist_name, album_title, number_of_songs=None):
+    album = {
+        'artist': artist_name,
+        'title': album_title
+    }
+    if number_of_songs:
+        album['number_of_songs'] = number_of_songs
+    return album
+
+while True:
+    artist = input("Enter the artist's name (or 'quit' to exit): ")
+    if artist == 'quit':
+        break
+
+    title = input("Enter the album's title (or 'quit' to exit): ")
+    if title == 'quit':
+        break
+
+    album = make_album(artist, title)
+    print(album)"""
+print("---------------------------------------")
+
+"""
+8-9. Messages: Make a list containing a series of short text messages. 
+Pass the list to a function called show_messages(), which prints each text message.
+"""
+def show_messages(messages):
+    for message in messages:
+        print(message)
+
+messages = [
+     
+        "Hello!"
+        "\nHow are you?"
+        "\nAre you coming to dinner tonight?"
+]
+
+show_messages(messages)
+print("---------------------------------------")
+"""
+8-10. Sending Messages: Start with a copy of your program from Exercise 8-9. 
+Write a function called send_messages() that prints each text message and moves each message to a new list called sent_messages as it’s printed. 
+After calling the function, print both of your lists to make sure the messages were moved correctly.
+"""
+messages = ["Hello!", "How are you?", "Are you coming to dinner tonight?"]
+sent_messages = []
 
 
+def send_messages(messages, sent_messages):
+ 
+  while messages:
+    message = messages.pop(0)
+    print(message)
+    sent_messages.append(message)
 
 
+send_messages(messages.copy(), sent_messages)
+
+print(messages)
+print(sent_messages)
+print("---------------------------------------")
+"""
+8-11. Archived Messages: Start with your work from Exercise 8-10. 
+Call the function send_messages() with a copy of the list of messages. 
+After calling the function, print both of your lists to show that the original list has retained its messages.
+"""
+
+messages_copy = messages[:]
+
+sent_messages = []
+
+show_messages(messages)
+
+send_messages(messages_copy, sent_messages)
+
+print("Original messages:", messages)
+print("Sent messages:", sent_messages)
+print("---------------------------------------")
+
+"""
+8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. 
+The function should have one parameter that collects as many items as the function call provides, and it should print a summary of the sandwich that’s being ordered. 
+Call the function three times, using a different number of arguments each time.
+"""
+
+def make_sandwich(*ingredients):
+    
+    print("\nMaking a sandwich with the following ingredients:")
+    for ingredient in ingredients:
+        print("- " + ingredient)
+
+make_sandwich("Ham", "Ketchup", "Lettuce")
+make_sandwich("Cheese", "Tomato")
+make_sandwich("Peanut Butter", "Jelly")
+print("---------------------------------------")
+"""
+8-13. User Profile:  Build a profile of yourself by calling build_profile(), using your first and last names and 
+three other key-value pairs that describe you. 
+All the values must be passed to the function as parameters. 
+The function then must return a string such as "Eric Crow, age 45, hair brown, weight 67"
+"""
+def build_profile(first_name, last_name, age, hair_color, weight):
+    profile = f"{first_name} {last_name}, age {age}, hair {hair_color}, weight {weight}"
+    return profile
 
 
+my_profile = build_profile("Andrea", "Bardi", 20, "brown", 74)
 
+print(my_profile)
+print("---------------------------------------")
+"""
+8-14. Cars: Write a function that stores information about a car in a dictionary. 
+The function should always receive a manufacturer and a model name. It should then accept an arbitrary number of keyword arguments. 
+Call the function with the required information and two other name-value pairs, such as a color or an optional feature. 
+Your function should work for a call like this one: car = make_car('subaru', 'outback', color='blue', tow_package=True) 
+Print the dictionary that’s returned to make sure all the information was stored correctly. 
+"""
+def make_car(producer, model, **car_info):
+ 
+    car = {
+        'producer': producer, 
+        'model': model
+ }
+    
+    car.update(car_info)
+    return car
 
+car = make_car('Toyota', 'Yaris', color='Black', insurance=True)
+print(car)
+print("---------------------------------------")
 
+"""
+8-15. Printing Models: Put the functions for the example printing_models.py in a separate file called printing_functions.py. 
+Write an import statement at the top of printing_models.py, and modify the file to use the imported functions.
+"""
+from lezione4 import city_country
 
+print(city_country("Rome", "Italy"))
+print(city_country("Amsterdam", "Netherlands"))
+print(city_country("Helsinki", "Finland"))
+print("---------------------------------------")
 
-
-
+"""
+8-16. Imports: Using a program you wrote that has one function in it, store that function in a separate file. 
+Import the function into your main program file, and call the function using each of these approaches:
+import module_name
+from module_name import function_name
+from module_name import function_name as fn
+import module_name as mn
+from module_name import *
+"""
