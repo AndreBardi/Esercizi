@@ -258,3 +258,23 @@ from module_name import function_name as fn
 import module_name as mn
 from module_name import *
 """
+import mynewfun
+print(mynewfun.hello('Giulia'))
+
+from mynewfun import hello
+print(hello('Carlos'))
+
+from mynewfun import hello as hello_fn
+print(hello_fn('Damian'))
+
+import mynewfun as myfun_fn
+print(myfun_fn.hello('Micheal'))
+
+from mynewfun import *
+print(hello(f'Jean'))
+
+"""
+8-17. Styling Functions: Choose any three programs you wrote for this chapter, 
+and make sure they follow the styling guidelines described in this section.
+"""
+
