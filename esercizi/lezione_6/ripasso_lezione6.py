@@ -6,14 +6,13 @@ class Person:
                  name: str,
                  surname: str,
                  date_of_birth: str,
-                 gender: str,
-                 ore_lavorate: int) -> None:
+                 gender: str,) -> None:
           
           self.name: str = name
           self.surname: str = surname
           self.date_of_birth: str = date_of_birth
           self.gender: str = gender
-          self.ore_lavorate: int = ore_lavorate
+          
     
     def calcola_eta(self) ->  int:
             
@@ -22,8 +21,7 @@ class Person:
 person_1: Person = Person(name="Flavio",
                           surname="Giorgi",
                           date_of_birth="24/12/94",
-                          gender="Male",
-                          ore_lavorate=50)
+                          gender="Male",)
 
 class Dipendende(Person):
       
@@ -35,7 +33,7 @@ class Dipendende(Person):
                    ore_lavorate: int) -> None:
                    
             self.ore_lavorate: str = ore_lavorate  
-            super().__init__(name, surname, date_of_birth, gender, ore_lavorate)
+            super().__init__(name, surname, date_of_birth, gender)
         
         def calcola_stipendio(self) -> int:
 
