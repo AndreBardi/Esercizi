@@ -24,3 +24,6 @@ class Fence:
         self.temperature: float = temperature
         self.habitat: str = habitat
     
+class Zoo_keeper:
+    def __init__(self):
+        pass
