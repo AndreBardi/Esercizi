@@ -25,5 +25,20 @@ class Fence:
         self.habitat: str = habitat
     
 class Zoo_keeper:
-    def __init__(self):
+    def __init__(self,
+                 name: str,
+                 surname: str,
+                 id: str):
+        self.name: str = name
+        self.surname: str = surname
+        self.id: str = id
+
+    def add_animal(self,
+                   animal: str,
+                   fence: str):
+        self.animal: str = animal
+        self.fence: str = fence
+
+    def remove_animal(self):
         pass
+    
