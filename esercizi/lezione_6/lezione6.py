@@ -1,65 +1,59 @@
-"""
-class Person:
-    def __init__(self, name, age):
-        self.name = name
+class Restaurant:
+    def __init__(self,
+                 name: str,
+                 cuisine_type: str,
+                 number_served: int = 0,
+                 open: bool = False):
+        self.name : str = name
+        self.cuisine_type : str = cuisine_type
+        self.number_served : str = number_served
+        self.open : bool = open
+
+    def open_restaurant(self):
+        print(f'Il ristorante {self.name} è aperto')
+        self.open = True
+
+    def increment_number(self):
+        if self.open:
+            self.number_served += 1
+
+    def close_restaurant(self):
+        self.number_served = 0
+        self.open = False
+
+r1 = Restaurant(name="La vecchia Roma", cuisine_type="Romana")
+print(f'Numero_Servizi={r1.number_served}, Ristorante Aperto? {r1.open}')
+r1.increment_number()
+print(r1.number_served)
+r1.open_restaurant()
+for _ in range(100):
+    r1.increment_number()
+print(r1.number_served)
+r1.close_restaurant()
+print(r1.number_served)
+
+class User:
+    def __init__(self,
+                 first_name: str,
+                 last_name: str,
+                 age: int,
+                 cf: str,
+                 email: str):
+        self.first_name = first_name
+        self.last_name = last_name
         self.age = age
+        self.cf = cf
+        self.email = email
 
-alice = Person("Alice W.", 45)
-bob = Person("Bob M.", 36)
-
-print(f"Età = {bob.age}")
-
-if bob.age > alice.age:
-    print(f"The Oldest has {bob.age} years")
-elif bob.age < alice.age:
-    print(f"The Oldest has {alice.age} years")
-
-giovi = Person("Giovanni D", 21)
-emanuele = Person("Emanuele G", 19)
-bardh = Person("Bardh P", 27)
-
-people = [alice, bob, giovi,
-          emanuele, bardh]
-"""
-"""
-youngest = None
-for i in people:
-    if youngest == None:
-        youngest = i.age
-    if youngest > i.age:
-        youngest = i.age
-print(youngest)
-"""
-"""
-min_age: float = float('inf')
-index_min_age: int = 0
-for i, people in enumerate(people):
-    if people.age < min.age:
-        min.age = people.age
-        index_min_age = i
-"""
-
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-        self.hobbies: set[str] = set()
-    
-    def add_hobbies(self, hobbies: list[str]):
-        self.hobbies.update(hobbies)
-    
-    def add_hobby(self, hobby: str):
-        self.hobbies.add(hobby)
-
-    def remove_hobby(self, hobby: str):
-        if hobby in self.hobbies:
-            self.hobbies.remove(hobby)
+    def greet_user(self):
+        print(f"Hello {self.first_name}. Come va?")
 
     def __str__(self) -> str:
-        return f'Person(name={self.name}), age={self.age}, hobbies={self.hobbies}'
+        return f'User(name={self.first_name},'\
+            + f'surname={self.last_name})'
     
-alice = Person("Alice", 47)
-bob = Person("Bob", 37)
-print(alice)
-alice.add_hobbies(["Pallacanestro", "Cricket", "Pallacanestro"])
-print(alice)
+user1 = User(first_name="Lorenzo",
+             age=22, last_name="Maggi",
+             email="lorenzo.maggi@gmail.com",
+             cf="MGGLNZ01L07H501I")
+print(user1)
