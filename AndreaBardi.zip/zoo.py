@@ -1,13 +1,20 @@
 class Zoo:
     def __init__(self,
-                 zoo: str, zoo_keepers: str):
-        self.zoo: str = zoo
+                 fences: list,
+                 zoo_keepers: str):
+        
+        self.fences: list = fences
         self.zoo_keepers: str = zoo_keepers
 
 class Animal:
     def __init__(self,
-            name: str, species: str, age: int, height: float, 
-            width: float, preferred_habitat: str, health: float):
+                name: str, 
+                species: str, 
+                age: int, 
+                height: float, 
+                width: float, 
+                preferred_habitat: str, 
+                health: float):
        
         self.name: str = name
         self.species: str = species
@@ -16,29 +23,50 @@ class Animal:
         self.width: float = width
         self.preferred_habitat: str = preferred_habitat
         self.health: float = health
+        self.feeding = None
 
 class Fence:
-    def __init__(self, area: float, temperature: 
-                 float, habitat: str) -> list:
+    def __init__(self, 
+                 area: float, 
+                 temperature: float, 
+                 habitat: str, 
+                 animal: list[Animal]) -> list:
+        
         self.area: float = area
         self.temperature: float = temperature
         self.habitat: str = habitat
-    
+        self.animal: list = animal
+
 class Zoo_keeper:
     def __init__(self,
                  name: str,
                  surname: str,
                  id: str):
+        
         self.name: str = name
         self.surname: str = surname
         self.id: str = id
+        self.fences: list = []
+        self.animals: list = []
 
-    def add_animal(self,
-                   animal: str,
-                   fence: str):
-        self.animal: str = animal
-        self.fence: str = fence
+    def add_animal(self, animal: Animal, fence: Fence):
+        
+        if animal.height + animal.width > fence.area:
+            pass
+        elif fence.area != animal.preferred_habitat:
+            pass
+        else:
+            fence.animal.append(animal.name)
 
-    def remove_animal(self):
-        pass
-    
+        
+
+    def remove_animal(self, animal: Animal, fence: Fence):
+        if animal.width + animal.height > fence.area:
+            fence.animal.remove(animal)
+        elif fence.area != animal.preferred_habitat:
+            fence.animal.remove(animal)
+
+
+    def feed_animal(self,
+                    animal: Animal):
+        self.animal = animal

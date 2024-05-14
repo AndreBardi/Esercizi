@@ -68,7 +68,7 @@ class User:
         self.login_attempts = 0
     
     def greet_user(self):
-        print(f"Hello {self.first_name}. Come va?")
+        print(f"Hello {self.first_name}. How are you?")
 
     
     def __str__(self) -> str:
