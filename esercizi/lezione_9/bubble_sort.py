@@ -12,5 +12,13 @@ def bubble_sort(x: list[float]) -> None:
         for j in range(len(x) - 1 - i):
             if x[j] > x[j + 1]:
                 temp = x[j + 1]
+                swap = False
                 x[j + 1] = x[j]
                 x[j] = temp
+            if not swap:
+                break
+
+
+a = [1, 3, 2, 4, 5]
+bubble_sort(a)
+print(a)
