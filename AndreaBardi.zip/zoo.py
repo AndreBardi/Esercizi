@@ -6,6 +6,9 @@ class Zoo:
         self.fences: list = fences
         self.zoo_keepers: str = zoo_keepers
 
+    def describe_zoo(self):
+        pass
+
 class Animal:
     def __init__(self,
                 name: str, 
@@ -23,7 +26,7 @@ class Animal:
         self.width: float = width
         self.preferred_habitat: str = preferred_habitat
         self.health: float = health
-        self.feeding = None
+        
 
 class Fence:
     def __init__(self, 
@@ -69,4 +72,5 @@ class Zoo_keeper:
 
     def feed_animal(self,
                     animal: Animal):
+        
         self.animal = animal
