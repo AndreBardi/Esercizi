@@ -26,6 +26,7 @@ class Animal:
         self.width: float = width
         self.preferred_habitat: str = preferred_habitat
         self.health: float = health
+        self.area = height*width
         
 
 class Fence:
@@ -54,17 +55,17 @@ class Zoo_keeper:
 
     def add_animal(self, animal: Animal, fence: Fence):
         
-        if animal.height + animal.width > fence.area:
-            pass
+        if animal.area > fence.area:
+            None
         elif fence.area != animal.preferred_habitat:
-            pass
+            None
         else:
             fence.animal.append(animal.name)
 
         
 
     def remove_animal(self, animal: Animal, fence: Fence):
-        if animal.width + animal.height > fence.area:
+        if animal.area > fence.area:
             fence.animal.remove(animal)
         elif fence.area != animal.preferred_habitat:
             fence.animal.remove(animal)
@@ -74,3 +75,4 @@ class Zoo_keeper:
                     animal: Animal):
         
         self.animal = animal
+        
