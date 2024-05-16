@@ -113,14 +113,3 @@ class Zoo_keeper:
         
     def __str__(self):
         return f"ZooKeeper(name={self.name}, surname={self.surname}, id={self.id})"
-
-
-fence1 = Fence(area=100, temperature=25, habitat="Continent")
-fence1.animals = [Animal(name="Scoiattolo", species="Blabla", age=25, height=4.5, width=2.3, preferred_habitat="Forest"),
-                  Animal(name="Lupo", species="Lupus", age=14, height=3.2, width=1.8, preferred_habitat="Forest")]
-
-zookeeper = Zoo_keeper(name="Lorenzo", surname="Maggi", id="1234", zoo="My Zoo")
-zookeeper.fences.append(fence1)
-
-zoo = Zoo(fences=[fence1], zoo_keepers=[zookeeper])
-zoo.describe_zoo()
