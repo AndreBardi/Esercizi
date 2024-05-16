@@ -1,3 +1,26 @@
+class Zoo:
+    def __init__(self,
+                 fences: list,
+                 zoo_keepers: list):
+        
+        self.fences = fences
+        self.zoo_keepers = zoo_keepers
+
+    def describe_zoo(self):
+        print("Guardians:")
+        for zoo_keeper in self.zoo_keepers:
+            print(zoo_keeper)
+
+        print("\nFences:")
+        for fence in self.fences:
+            print(fence)
+            print("with animals:")
+            for animal in fence.animals:
+                print(animal)
+
+        print("#" * 30)
+
+
 class Animal:
     def __init__(self,
                 name: str, 
@@ -16,114 +39,88 @@ class Animal:
         self.health: float = round(100 * (1 / age), 3)
         self.area = height * width
 
+    def __str__(self):
+        return f"Animal(name={self.name}, species={self.species}, age={self.age}, health={self.health})"
+
 class Fence:
     def __init__(self, 
                  area: float, 
                  temperature: float, 
                  habitat: str, ):
         
+        self.initial_area = area
         self.area: float = area
         self.temperature: float = temperature
         self.habitat: str = habitat
         self.animals: list = []
+    
+    def __str__(self):
+            return f"Fence(area={self.initial_area}, temperature={self.temperature}, habitat={self.habitat})"
 
 class Zoo_keeper:
     def __init__(self,
                  name: str,
                  surname: str,
-                 id: str):
+                 id: str,
+                 zoo: str):
         
         self.name: str = name
         self.surname: str = surname
         self.id: str = id
         self.fences: list = []
         self.animals: list = []
+        self.zoo: str = zoo
 
     def add_animal(self, animal: Animal, fence: Fence):
-        if animal.area > fence.area or fence.habitat != animal.preferred_habitat:
-            None
-        else:
+        if fence in self.zoo.fences and fence.area >= animal.area:
+            fence.area -= animal.area
             fence.animals.append(animal)
             
 
     def remove_animal(self, animal: Animal, fence: Fence):
-        if animal in fence.animals:
+        if fence in self.zoo.fences and animal in fence.animals:
+            fence.area += animal.area
             fence.animals.remove(animal)
+   
+    def feed(self):
+        for fence in self.zoo.fences:
+            for animal in fence.animals:
+                self.feed_animal(animal, fence)
 
-    def feed_animal(self, animal: Animal):
-        if animal.area >= (animal.height * animal.width):
-            animal.health *= 1.01
-            animal.height *= 1.02
-            animal.width *= 1.02
+    def feed_animal(self, animal, fence):
+        new_height = animal.height * 1.02
+        new_width = animal.width * 1.02
+        required_space = new_height * new_width - animal.height * animal.width
 
-    def clean(self, fence: Fence):
+        if animal.health < 100 and fence.area >= required_space:
+            animal.health = min(100, animal.health + 1)
+            fence.area -= required_space
+            animal.height = new_height
+            animal.width = new_width
+
+    def clean(self):
+        cleaning_time = 0.0
+        for fence in self.fences:
+            cleaning_time += self.cleaning_the_fence(fence)
+        return cleaning_time
+
+    def cleaning_the_fence(self, fence: Fence):
         occupied_area = sum(animal.area for animal in fence.animals)
         if fence.area == 0:
             return occupied_area
         else: 
             return occupied_area / fence.area
-
-class Zoo:
-    def __init__(self,
-                 fences: list,
-                 zoo_keepers: list):
         
-        self.fences = fences
-        self.zoo_keepers = zoo_keepers
+    def __str__(self):
+        return f"ZooKeeper(name={self.name}, surname={self.surname}, id={self.id})"
 
-    def describe_zoo(self):
-        print("Guardians:")
-        for guardian in self.zoo_keepers:
-            print(f"ZooKeeper: name={guardian.name}, surname={guardian.surname}, id={guardian.id}")
 
-        print("Fences:")
-        for fence in self.fences:
-            print(f"Fence: area={fence.area}, temperature={fence.temperature}, habitat={fence.habitat}")
-            print("with animals:")
-            for animal in fence.animals:
-                print(f"Animal: name={animal.name}, species={animal.species}, age={animal.age}, height={animal.height},"
-                f" width={animal.width}, health={animal.health}")
+fence1 = Fence(area=100, temperature=25, habitat="Continent")
+fence1.animals = [Animal(name="Scoiattolo", species="Blabla", age=25, height=4.5, width=2.3, preferred_habitat="Forest"),
+                  Animal(name="Lupo", species="Lupus", age=14, height=3.2, width=1.8, preferred_habitat="Forest")]
 
-        print("#" * 30)
+zookeeper = Zoo_keeper(name="Lorenzo", surname="Maggi", id="1234", zoo="My Zoo")
+zookeeper.fences.append(fence1)
 
-animal1: Animal = Animal(name="Giraffe", species="Camelopardalis", age=6, height=4.2, width=7.5, preferred_habitat="Savannah")
-animal2: Animal = Animal(name="Belgian Shepherd Dog", species="Canis lupus", age=4, height= 62.0, width= 40.2, preferred_habitat="Family Yard")
-animal3: Animal = Animal(name="Pigeon", species="Columba livia", age=3, height=2.3, width=1.7, preferred_habitat="Plains")
-
-fence1 = Fence(area=100.0, temperature=45.0, habitat="Savannah")
-fence2 = Fence(area=72.0, temperature=37.1, habitat="Family Yard")
-fence3 = Fence(area=55.5, temperature=29.8, habitat="Plains")
-
-zookeeper = Zoo_keeper(name="Andrea", surname="Bardi", id="BRD2701")
-
-zoo= Zoo(fences=[fence1, fence2, fence3], zoo_keepers=[zookeeper])
-
-print("State of the zoo before adding animals: ")
-zoo.describe_zoo()
-
-zookeeper.add_animal(animal1, fence1)
-zookeeper.add_animal(animal2, fence2)
-zookeeper.add_animal(animal3, fence3)
-
-print("\nState of the zoo after adding animals: ")
-zoo.describe_zoo()
-
-zookeeper.remove_animal(animal3, fence3)
-
-print("\nState of the zoo after removing animal: ")
-zoo.describe_zoo()
-
-print("\nCleaning the fence number 1: ")
-clean_area1 = zookeeper.clean(fence1)
-print(f"Area cleaned in fence 1: {clean_area1}")
-
-print("\nCleaning the fence number 2: ")
-clean_area2 = zookeeper.clean(fence2)
-print(f"Area cleaned in fence 2: {clean_area2}")
-
-print("\nCleaning the fence number 3: ")
-clean_area3 = zookeeper.clean(fence3)
-print(f"Area cleaned in fence 2: {clean_area3}")
-
-print("\nFinal state of the zoo: ")
+zoo = Zoo(fences=[fence1], zoo_keepers=[zookeeper])
 zoo.describe_zoo()
