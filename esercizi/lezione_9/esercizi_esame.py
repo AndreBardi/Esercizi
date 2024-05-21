@@ -23,7 +23,7 @@ class Bank:
         
     def create_account(account_id):
         ()
-"""
+
 
 def construct(current,wordDict, memo={}):
         
@@ -96,3 +96,25 @@ board = [["8","3",".",".","7",".",".",".","."]
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]
 print(valid_sudoku(board))
+
+"""
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.next = next
+
+def reverse(head: ListNode) -> list[int]:
+    reversed_list: list[int] = []
+    queue: list[ListNode] = [head]
+
+    while queue:
+        curr_node = queue.pop()
+        if curr_node:
+            reversed_list.append(curr_node.val)
+            reverse(curr_node.next, reversed_list)
+
+head = ListNode(val=0,
+                next=ListNode(val=1,
+                              next=ListNode(val=5,
+                                            next=ListNode(val=6))))
+print(reverse(head))
