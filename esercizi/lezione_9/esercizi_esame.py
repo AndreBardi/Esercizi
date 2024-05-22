@@ -99,7 +99,7 @@ print(valid_sudoku(board))
 
 """
 
-class ListNode:
+"""class ListNode:
     def __init__(self, val=0, next=None):
         self.next = next
 
@@ -117,4 +117,4 @@ head = ListNode(val=0,
                 next=ListNode(val=1,
                               next=ListNode(val=5,
                                             next=ListNode(val=6))))
-print(reverse(head))
+print(reverse(head))"""
