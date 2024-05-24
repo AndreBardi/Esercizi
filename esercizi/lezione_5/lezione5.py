@@ -1,4 +1,4 @@
-#es1
+"""#es1
 def find_element(lst: list[int], element: int) -> bool:
    
     if element in lst:
@@ -48,7 +48,7 @@ def check_combination(conditionA: bool, conditionB: bool, conditionC: bool) -> s
         return "Operazione permessa"
     else:
         return "Operazione negata"
-print(check_combination(True, False, True))
+print(check_combination(True, False, True))"""
 #es7
 def check_parentheses(expression: str) -> bool:
     lst1:list = []
@@ -65,7 +65,7 @@ def check_parentheses(expression: str) -> bool:
             continue
     
     return True 
-#es8
+"""#es8
 def count_isolated(num:int) -> int:
     count = 0
     for i in range(len(num)):
@@ -85,4 +85,4 @@ def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
     for i in dict3:
         if i in dict1 and i in dict2:
             dict3[i] = dict1[i] + dict2[i]
-    return dict3
+    return dict3"""
