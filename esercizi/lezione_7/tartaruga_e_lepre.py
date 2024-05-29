@@ -44,8 +44,8 @@ def h_move(h_position: int) -> int:
     return h_position
 
 def begin_race():
-    t_position = 1
-    h_position = 1
+    t_position = 0
+    h_position = 0
 
     print("BANG !!!!! AND THEY'RE OFF !!!!!")
 
@@ -65,5 +65,12 @@ def begin_race():
         if t_position >= 70 and h_position >= 70:
             print("IT'S A TIE!!!")
             break
+
+"""
+def weather(rain):
+    if rain == True:
+        """
+        
+
 
 begin_race()
