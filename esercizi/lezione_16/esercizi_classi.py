@@ -56,17 +56,25 @@ class RecipeManager:
     
     def add_ingredient(self, recipe_name: str, ingredient: str):
 
-        if ingredient not in self.recipes[recipe_name]:
-            self.recipes[recipe_name].append(ingredient)
+        recipe_name = self.name
+        if ingredient not in self.ingredients:
+            self.ingredients.append(ingredient)
+            return self.ingredients
         else:
             print("L'ingrediente è già presente nella lista")
 
     def remove_ingredient(self, recipe_name: str, ingredient: str):
-        if ingredient in self.recipes[recipe_name]:
-            self.recipes[recipe_name].remove(ingredient)
+        if ingredient in self.ingredients:
+            self.ingredients.remove(ingredient)
         else:
             print("L'ingrediente non esiste")
-
+    
     def update_ingredient(self, recipe_name: str, old_ingredient: str, new_ingredient: str):
-        if old_ingredient in self.recipes[recipe_name]:
-            self.recipes
+        for i in range(len(self.ingredients)):
+            if self.ingredients[i] == old_ingredient:
+                self.ingredients[i] = new_ingredient
+                return self.ingredients
+        print("L'ingrediente non esiste")
+        return self.ingredients
+
+    
