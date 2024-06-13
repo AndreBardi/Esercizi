@@ -39,40 +39,86 @@ c.add1()
 z  = c.get()
 print(z)"""
 
-class RecipeManager:
+"""class RecipeManager:
     def __init__(self) -> None:
         self.recipes = {}
 
     def create_recipe(self, name: str, ingredients: list[str]):
-        self.name = name
-        self.ingredients = ingredients
-        ingredients = []
+        if name in self.recipes:
+            return f"{name} già esiste"
+        self.recipes[name] = ingredients
+        return {name: ingredients}
 
-        if name not in self.recipes and ingredients not in self.recipes:
-            self.recipes[name] = ingredients
-            return self.recipes
-        elif name and ingredients in self.recipes:
-            print("Ricetta già esistente")
-    
     def add_ingredient(self, recipe_name: str, ingredient: str):
-
-        recipe_name = self.name
-        if ingredient not in self.ingredients:
-            self.ingredients.append(ingredient)
-            return self.ingredients
-        else:
-            print("L'ingrediente è già presente nella lista")
+        if recipe_name not in self.recipes:
+            return f"{recipe_name} non esiste"
+        if ingredient in self.recipes[recipe_name]:
+            return f"{ingredient} è già presente nella lista"
+        self.recipes[recipe_name].append(ingredient)
+        return {recipe_name: self.recipes[recipe_name]}
 
     def remove_ingredient(self, recipe_name: str, ingredient: str):
-        if ingredient in self.ingredients:
-            self.ingredients.remove(ingredient)
-        else:
-            print("L'ingrediente non esiste")
+        if recipe_name not in self.recipes:
+            return f"{recipe_name} non esiste"
+        if ingredient not in self.recipes[recipe_name]:
+            return f"{ingredient} non esiste nella lista degli ingredienti"
+        self.recipes[recipe_name].remove(ingredient)
+        return {recipe_name: self.recipes[recipe_name]}
     
     def update_ingredient(self, recipe_name: str, old_ingredient: str, new_ingredient: str):
-        for i in range(len(self.ingredients)):
-            if self.ingredients[i] == old_ingredient:
-                self.ingredients[i] = new_ingredient
-                return self.ingredients
-        print("L'ingrediente non esiste")
-        return self.ingredients
+        if recipe_name not in self.recipes:
+            return f"{recipe_name} non esiste"
+        if old_ingredient not in self.recipes[recipe_name]:
+            return f"{old_ingredient} non esiste nella lista degli ingredienti di {recipe_name}"
+        if new_ingredient in self.recipes[recipe_name]:
+            return f"{new_ingredient} è già presente nella lista degli ingredienti di {recipe_name}"
+        for i in range(len(self.recipes[recipe_name])):
+            if self.recipes[recipe_name][i] == old_ingredient:
+                self.recipes[recipe_name][i] = new_ingredient
+                break
+        return {recipe_name: self.recipes[recipe_name]}
+    
+    def list_recipes(self):
+        return list(self.recipes.keys())
+    
+    def list_ingredients(self, recipe_name: str):
+        if recipe_name not in self.recipes:
+            return f"{recipe_name} non esiste"
+        return self.recipes[recipe_name]
+    
+    def search_recipe_by_ingredient(self, ingredient: str):
+        found_recipes = {}
+        for name, ingredients in self.recipes.items():
+            if ingredient in ingredients:
+                found_recipes[name] = ingredients
+        return found_recipes
+"""
+
+"""class Veicolo:
+    def __init__(self, marca, modello, anno):
+        self.marca = marca
+        self.modello = modello
+        self.anno = anno
+    
+    def descrivi_veicolo(self):
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}")
+
+
+class Auto(Veicolo):
+    def __init__(self, marca, modello, anno, numero_porte):
+        super().__init__(marca, modello, anno)
+        self.numero_porte = numero_porte
+    
+    def descrivi_veicolo(self):
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}, Numero di porte: {self.numero_porte}")
+
+
+class Moto(Veicolo):
+    def __init__(self, marca, modello, anno, tipo):
+        super().__init__(marca, modello, anno)
+        self.tipo = tipo
+    
+    def descrivi_veicolo(self):
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}, Tipo: {self.tipo}")
+"""
+
