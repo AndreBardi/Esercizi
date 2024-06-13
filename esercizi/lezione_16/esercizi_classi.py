@@ -1,12 +1,12 @@
-"""class Contatore:
+class Contatore:
     def __init__(self, conteggio: int) -> None:
         self.conteggio = conteggio
         conteggio = 0
 
     def setZero(self):
-        pass"""
+        pass
 
-class Specie:
+"""class Specie:
     def __init__(self, nome: str,
                  popolazione: int,
                  tasso_crescita: float) -> None:
@@ -16,4 +16,4 @@ class Specie:
         self.tasso_crescita = tasso_crescita
 
     def cresci(self):
-        self.popolazione
+        self.popolazione"""
