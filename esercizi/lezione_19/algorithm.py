@@ -85,6 +85,7 @@ if __name__ == "__main__":
     print(f"MERGE: {merge_sort_times}\nBUBBLE: {bubble_sort_times}")
     plt.plot(cases, merge_sort_times, label="Merge")
     plt.plot(cases, bubble_sort_times, label="Bubble")
+    plt.yscale("log")
     plt.xscale("log")
     plt.legend()
     plt.show()
