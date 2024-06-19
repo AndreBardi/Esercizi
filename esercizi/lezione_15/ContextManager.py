@@ -29,6 +29,9 @@ def ciao(name: str) -> str:
 
     print(f'Greetings, {name}')
 
+def salve():
+    pass    
+
 def parent():
     print("Sono in parent\n")
 
@@ -41,10 +44,15 @@ print(parent())
 
 def decorator(func):
     def wrapper():
-        print(f"Before the function")
+        import time
+
+        start = time.time()
+
         func()
-        print(f"After the function")
-    return wrapper
+
+        print(f"Time elapsed: {time.time() - start}")
+        
+        return wrapper()
 
 
 def ciao():
@@ -54,3 +62,4 @@ def ciao():
 ciao()
 ciao = decorator(ciao)
 ciao()
+
