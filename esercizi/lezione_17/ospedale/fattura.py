@@ -2,14 +2,14 @@ from dottore import Dottore
 from paziente import Paziente
 
 class Fattura:
-    def __init__(self, paziente: list[str], dottore: str) -> None:
+    def __init__(self, paziente: list[Paziente], dottore: Dottore) -> None:
 
         self.dottore: Dottore = dottore
-        self.paziente: Paziente = paziente
+        self.paziente: list[Paziente] = paziente
         
         if dottore.isAValidDoctor():
             self.fatture = len(paziente)
-            self.salary = 0
+            self.salary = 1
         else:
             dottore = None
             paziente = None
@@ -18,7 +18,7 @@ class Fattura:
             print("Non è possibile creare la classe fattura poiché il dottore non è valido!")
 
     def getSalary(self):
-        if self.dottore and self.paziente is not None:
+        if self.dottore and self.paziente:
             self.salary = self.dottore.getParcel() * self.fatture
             return self.salary
         return None
@@ -39,7 +39,10 @@ class Fattura:
 
     def removePatient(self, idCode):
         if self.paziente is not None:
-            self.paziente = [patient for patient in self.paziente if patient != idCode]
+            for i in self.paziente:
+                if i.idCode == idCode:
+                    self.paziente.remove(i)
+                    break
             self.fatture = self.getFatture()
             self.salary = self.getSalary()
             print(f"Alla lista del Dottor {self.dottore.last_name} è stato rimosso il paziente {idCode}")
