@@ -1,0 +1,66 @@
+1. Utente
+  1.1 nome : Stringa
+  1.2 registgazione : Data
+  1.3 affidabilità : *calcolabile* come [...]
+
+2. Post
+  2.1 oggetto venduto
+  2.2 post con asta oppure senza 
+  2.3 venditore (utente)
+
+3. Ogetti
+  3.1 descrizione : Stringa
+  3.2 categoria : (...)
+  3.3 metodo_pagamento : (almeno uno)
+     3.3.1 carta
+     3.3.2 bonifico
+  3.4 condizione_uso : (nuovo o usato)
+  3.5 post in cui è venduto
+
+4. Post con Asta
+  4.1 prezzo_iniziale : Reale >= 0 	 
+  4.2 rialzi : Reale > 0
+  4.3 scadenza_asta : Data
+  4.4 prezzo finale *calcolato* come [...]
+  4..5 bid aggiudicario *calcolato* come [...]
+  
+  
+5. Post senza Asta
+  5.1 prezzo_vendita : Reale >= 0
+  5.2 utente compratore 
+  
+6. Bid
+  6.1 post con
+  6.2 istante
+  6.3 bidder (utente privato)
+  6.4 prezzo offerto : *calcolabile* come [...]
+
+
+	
+7. Oggetti nuovi
+  7.1 sono oggetti
+  1.2 anni garanzia : intero >= 2
+  
+8. Oggetti usati
+  8.1 sono oggetti
+  8.2 anni di garanzia : Intero >= 1 (opzionale)
+  8.3 condizione (ottimo, buono, discreto, da riparare)
+  
+9. Categorie
+  9.1 nome : Stringa (Univoco)
+  9.2 super-categorie (se esiste e se essa stessa è una categoria)
+  9.3 sotto-categorie (se esistono e se loro stesse sono una categoria)		
+  
+10. Utenti privati
+  10.1 sono utenti
+  
+11. Venditori professionali
+  11.1 sonop utenti
+  11.2 URL (stringa secondo standard)
+  11.3 popolarità : *calcolabile* come [...]
+  
+12. Feedback
+  12.1 giudizio : intero tra 0 e 5 (inclusi)
+  12.2 commento : Stringa (opzionale)
+  12.3 utente compratore
+  12.4 post relativo 
