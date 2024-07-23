@@ -1,9 +1,24 @@
 #N°1
-"""class Member:
-    def __init__(self, member_id: str, name: str, borrowed_books: list) -> None:
+class Book:
+    def __init__(self, book_id: str, title: str, author: str) -> None:
+        self.book_id: str = book_id
+        self.title: str = title
+        self.author: str = author
+        self.is_borrowed: bool = False
+
+    def borrow(self):
+        if not self.is_borrowed:
+            self.is_borrowed = True
+        
+    def return_book(self):
+        if self.is_borrowed:
+            self.is_borrowed = False
+
+class Member:
+    def __init__(self, member_id: str, name: str) -> None:
         self.member_id: str = member_id
         self.name: str = name
-        self.borrowed_books: list[Book] = borrowed_books
+        self.borrowed_books: list[Book] = []
     
     def borrow_book(self, book):
         for book in self.borrowed_books:
@@ -11,8 +26,8 @@
                 self.borrowed_books.append(book)
             else:
                 return f'error: {book} already taken'
-        
         return self.borrowed_books
+    
     def return_book(self, book):
         for book in self.borrowed_books:
             if book in self.borrowed_books:
@@ -20,18 +35,39 @@
             else:
                 return f'error: {book} is not borrowed'
 
-class Book:
-    def __init__(self, book_id: str, title: str, author: str, is_borrowed: bool) -> None:
-        self.book_id: str = book_id
-        self.title: str = title
-        self.author: str = author
-        self.is_borrowed: bool = is_borrowed
-
-    def borrow(self, book):
-        pass
-
 class Library:
-    pass"""
+    def __init__(self) -> None:
+        self.books: dict[str, Book] = {}
+        self.members: dict[str, Member] = {}
+    
+    def add_book(self, book_id: str, title: str, author: str):
+        if book_id not in self.books:
+            self.books[book_id] = Book(book_id=book_id, title=title, author=author)
+
+    def register_member(self, member_id:str, name: str):
+        if member_id not in self.members:
+            self.members[member_id] = Member(member_id=member_id, name=name)
+    
+    def borrow_book(self, member_id: str, book_id: str):
+        if book_id in self.books and member_id in self.members:
+           self.members[member_id].borrow_book(self.books[book_id])
+        else:
+            return 'Member not found' and 'Book not found' 
+
+    def return_book(self, member_id: str, book_id: str):
+        if book_id in self.books and member_id in self.members:
+            self.members[member_id].return_book(self.books[book_id])
+        else:
+            return 'Member not found' and 'Book not found' 
+
+    def get_borrowed_books(self, member_id: str) -> list[Book]:
+        if member_id in self.members:
+            bor_book: list = []
+            for i in self.members[member_id].borrowed_books:
+                bor_book.append(i.title)
+            return bor_book
+ 
+    
 
 #N°2
 """
