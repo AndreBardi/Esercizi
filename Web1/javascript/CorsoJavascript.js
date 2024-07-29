@@ -1,28 +1,17 @@
-/*
-PREREQUISITI: INSTALLARE NODE.JS
-*/
 
-//Esempio 1: stampare una stringa di testo a schermo.
 /*
-Esercizo di base che stampa a schermo la stringa di testo "ciao". 
-La funzione console.log, prende come input una stringa (nell'esempio
-la stringa "ciao" e produce una stampa a schermo della stessa.)
- */
-
 console.log("ciao");
 process.exit(0);
-
 /*
+
 Per usare il prompt:
 
 npm install prompt-sync
-
 */
 
-const prompt = require('prompt-sync')();
-
 /*
-const str = prompt('Enter a string: ');
+const prompt = require('prompt-sync')();
+       const str = prompt('Enter a string: ');
 console.log("Hai inserito " + str);
 process.exit(0);
 */
