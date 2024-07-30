@@ -37,17 +37,17 @@ console.log("La somma vale " + c)
 */
 
 
-a = prompt("Inserisci primo numero:")
-b = prompt("Inserisci secondo numero:")
-c = prompt("Inserisci operatore:")
-a1 = parseInt(a)
-b1 = parseInt(b)
-if(c=="+")
-	d = a1 + b1
-if(c=="-")
-	d = a1 - b1
+// a = prompt("Inserisci primo numero:")
+// b = prompt("Inserisci secondo numero:")
+// c = prompt("Inserisci operatore:")
+// a1 = parseInt(a)
+// b1 = parseInt(b)
+// if(c=="+")
+// 	d = a1 + b1
+// if(c=="-")
+// 	d = a1 - b1
 
-console.log("Risultato " + d) 
+// console.log("Risultato " + d) 
 
 
 
@@ -117,7 +117,7 @@ if(iPosizione >= 0)
 */
 
 
-"ciao;buonasera;buonanotte;"
+// "ciao;buonasera;buonanotte;"
 
 /*ESERCIZIO: scrivere un programma che data una stringa (es. sMiaStringa = "buonasera")
 verifica se la stringa contiene la lettera f nei primi 4 caratteri*/
@@ -159,38 +159,38 @@ stringa termina con una vocale. Indizio: usa la lunghezza della stringa*/
 
 
 
-function TerminaConLettera(sStringa,sLettera)
-{
-	lunghezzaStringa = sStringa.length;
-	lenDaCercare = sLettera.length;
-	iPos = sStringa.indexOf(sLettera, lunghezzaStringa -lenDaCercare);
-	if(iPos == -1)
-		return 0;
-	else
-		return 1;
-}
+// function TerminaConLettera(sStringa,sLettera)
+// {
+// 	lunghezzaStringa = sStringa.length;
+// 	lenDaCercare = sLettera.length;
+// 	iPos = sStringa.indexOf(sLettera, lunghezzaStringa -lenDaCercare);
+// 	if(iPos == -1)
+// 		return 0;
+// 	else
+// 		return 1;
+// }
 /*
 var iRet;
 iRet = TerminaConLettera("paperino","a");
 */
 
-function TerminaGruppoLettere(sStringa,vArrayLettere)
-{
-	iLenVect = vArrayLettere.length;
-	console.log("Mi hai passato un vettore lungo " + iLenVect);
+// function TerminaGruppoLettere(sStringa,vArrayLettere)
+// {
+// 	iLenVect = vArrayLettere.length;
+// 	console.log("Mi hai passato un vettore lungo " + iLenVect);
 
-	for(var ii=0;ii<iLenVect;ii++)
-	{
+// 	for(var ii=0;ii<iLenVect;ii++)
+// 	{
 		//Devo verificare che sStringa non termina con nessuna delle lettere del vettore
-		iRet = TerminaConLettera(sStringa,vArrayLettere[ii]);
-		if(iRet == 1)
-		{
-			console.log("Ho trovato " + vArrayLettere[ii])
-			return 1;
-		}
-	}
-	return 0;
-}
+// 		iRet = TerminaConLettera(sStringa,vArrayLettere[ii]);
+// 		if(iRet == 1)
+// 		{
+// 			console.log("Ho trovato " + vArrayLettere[ii])
+// 			return 1;
+// 		}
+// 	}
+// 	return 0;
+// }
 /*
 var oPersona={nome:"Giulio", Cognome:"Cesare", eta:32}
 console.log(oPersona.eta);
@@ -1204,3 +1204,36 @@ Manda,Physical Therapy Assistant,Brazil
 Leslie,Information Systems Manager,Japan
 Aleen,Cost Accountant,Canada";
 */
+
+// let word;
+
+// do {
+//     word = prompt("Inserisci una parola(per uscire inserire exit): ");
+
+//     if (word !== 'exit'){
+//         const vocale = "aeiouAEIOU";
+//         const numeri = "0123456789";
+//         let ContoVocali = 0;
+//         let ContoCons = 0;
+//         let ContoNums = 0;
+        
+//     for (let i = 0; i < word.length; i++){
+//         let char = word[i];
+//         if (vocale.includes(char)){
+//             ContoVocali++; 
+//         }else if (numeri.includes(char)){
+//             ContoNums++;
+//         }else if (/[a-zA-Z]/.test(char)){
+//             ContoCons ++;
+//         }
+//     }
+
+//     console.log("Parola: "+ word);
+//     console.log("Vocali: "+ word);
+//     console.log("Consonanti: "+ word);
+//     console.log("Numeri: "+ word);
+
+//     }
+    
+// } while (word !== "exit");
+
