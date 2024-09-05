@@ -6,20 +6,20 @@ CREATE TYPE Strutturato AS ENUM (
 CREATE TYPE LavoroProgetto AS ENUM (
     'Ricerca e Sviluppo', 'Dimostrazione', 'Management', 'Altro');
 	
-CREATE TYPE LavoroNonProgettuale as ENUM ('Didattica', 'Ricerca', 'Missione', 'Incontro Dipartimentale', 'Incontro 					 
+CREATE TYPE LavoroNonProgettuale AS ENUM ('Didattica', 'Ricerca', 'Missione', 'Incontro Dipartimentale', 'Incontro 					 
 	Accademico', 'Altro');
 	
-CREATE TYPE CausaAssenza as ENUM (
+CREATE TYPE CausaAssenza AS ENUM (
     'Chiusura Universitaria', 'Maternità', 'Malattia');
 	
-CREATE DOMAIN PosInteger as Integer
+CREATE DOMAIN PosInteger AS Integer
 	default 0
 	check (value >= 0)
 	
-CREATE TYPE StringaM as String
+CREATE TYPE StringaM AS String
 	varchar(100)
 	
-CREATE DOMAIN NumeroOre as Integer
+CREATE DOMAIN NumeroOre AS Integer
 	default 0
 	check (value >= 0 and value <= 8)
 
@@ -29,10 +29,73 @@ CREATE DOMAIN DENARO AS Real
 	
 	
 	
-create TABLE Persona (
+CREATE TABLE Persona (
     id NOT NULL,
-    nome NOT NULL,
-    cognome NOT NULL,
+    nome CHARACTER varyng (100) NOT NULL,
+    cognome CHARACTER varyng (100) NOT NULL,
     posizione Strutturato,
-    stipendio DENARO
+    stipendio Integer default 0,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE Progetto(
+    id NOT NULL,
+    nome CHARACTER varyng (100) NOT NULL,
+    inizio DATE,
+    fine DATE,
+    budget Integer default 0,
+    unique (nome),
+    CONSTRAINT chk_inizio_fine CHECK (inizio < fine),
+    PRIMARY KEY (id)
+
+);
+
+CREATE TABLE WP (
+    proggetto NOT NULL,
+    id NOT NULL,
+    nome CHARACTER varyng (100) NOT NULL,
+    inizio DATE,
+    fine DATE,
+    CONSTRAINT chk_inizio_fine CHECK (inizio < fine),
+    UNIQUE (progetto,nome),
+    foreing KEY (progetto) AS reference Progetto (id)
+
+);
+
+
+CREATE TABLE AttivitaProgetto (
+id NOT NULL,
+persona NOT NULL,
+proggetto NOT NULL,
+wp NOT NULL,
+giorno DATE,
+OreDurata NumeroOre,
+tipo LavoroProgetto,
+PRIMARY KEY (wp),
+foreingn KEY (persona) AS reference Persona(id),
+foreingn KEY (progetto) AS reference Progetto(id)
+
+
+);
+
+
+CREATE TABLE AttivitaProgetto (
+id NOT NULL,
+persona NOT NULL,
+tipo LavoroProgetto,
+giorno DATE,
+OreDurata NumeroOre,
+foreingn KEY (persona) AS reference Persona(id)
+
+);
+
+
+
+CREATE TABLE AttivitaProgetto (
+id NOT NULL,
+persona NOT NULL,
+tipo CausaAssenza,
+giorno DATE,
+UNIQUE(persona,giorno),
+foreingn KEY (persona) AS reference Persona(id)
 );
