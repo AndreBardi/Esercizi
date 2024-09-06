@@ -1,5 +1,5 @@
 import os
-
+import PyPDF2
 
 def CercaStringaInNomefile(sFile, sStringa):
     sFileLC = sFile.lower()
