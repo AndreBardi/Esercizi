@@ -31,8 +31,8 @@ CREATE DOMAIN DENARO AS Real
 	
 CREATE TABLE Persona (
     id NOT NULL,
-    nome CHARACTER varyng (100) NOT NULL,
-    cognome CHARACTER varyng (100) NOT NULL,
+    nome CHARACTER varying (100) NOT NULL,
+    cognome CHARACTER varying (100) NOT NULL,
     posizione Strutturato,
     stipendio Integer default 0,
     PRIMARY KEY (id)
@@ -40,7 +40,7 @@ CREATE TABLE Persona (
 
 CREATE TABLE Progetto(
     id NOT NULL,
-    nome CHARACTER varyng (100) NOT NULL,
+    nome CHARACTER varying (100) NOT NULL,
     inizio DATE,
     fine DATE,
     budget Integer default 0,
@@ -53,7 +53,7 @@ CREATE TABLE Progetto(
 CREATE TABLE WP (
     proggetto NOT NULL,
     id NOT NULL,
-    nome CHARACTER varyng (100) NOT NULL,
+    nome CHARACTER varying (100) NOT NULL,
     inizio DATE,
     fine DATE,
     CONSTRAINT chk_inizio_fine CHECK (inizio < fine),
