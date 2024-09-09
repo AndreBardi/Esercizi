@@ -79,7 +79,7 @@ foreingn KEY (progetto) AS reference Progetto(id)
 );
 
 
-CREATE TABLE AttivitaProgetto (
+CREATE TABLE AttivitaNonProgettuale (
 id NOT NULL,
 persona NOT NULL,
 tipo LavoroProgetto,
@@ -91,7 +91,7 @@ foreingn KEY (persona) AS reference Persona(id)
 
 
 
-CREATE TABLE AttivitaProgetto (
+CREATE TABLE Assenza (
 id NOT NULL,
 persona NOT NULL,
 tipo CausaAssenza,
