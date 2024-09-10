@@ -1,101 +1,96 @@
-CREATE DATABASE Accademia3:
+begin transaction;
 
-CREATE TYPE Strutturato AS ENUM (
-    'Ricercatore', 'Professore Associato', 'Professore Ordinario');
-	
-CREATE TYPE LavoroProgetto AS ENUM (
-    'Ricerca e Sviluppo', 'Dimostrazione', 'Management', 'Altro');
-	
-CREATE TYPE LavoroNonProgettuale AS ENUM ('Didattica', 'Ricerca', 'Missione', 'Incontro Dipartimentale', 'Incontro 					 
-	Accademico', 'Altro');
-	
-CREATE TYPE CausaAssenza AS ENUM (
-    'Chiusura Universitaria', 'Maternità', 'Malattia');
-	
-CREATE DOMAIN PosInteger AS Integer
-	default 0
-	check (value >= 0)
-	
-CREATE TYPE StringaM AS String
-	varchar(100)
-	
-CREATE DOMAIN NumeroOre AS Integer
-	default 0
-	check (value >= 0 and value <= 8)
 
-CREATE DOMAIN DENARO AS Real
-    default 0
-    check (value >= 0)
-	
-	
-	
-CREATE TABLE Persona (
-    id NOT NULL,
-    nome CHARACTER varying (100) NOT NULL,
-    cognome CHARACTER varying (100) NOT NULL,
-    posizione Strutturato,
-    stipendio Integer default 0,
-    PRIMARY KEY (id)
+create type Strutturato as 
+  enum('Ricercatore', 'Professore Associato', 'Professore Ordinario');
+
+create type LavoroProgetto as 
+  enum('Ricerca e Sviluppo', 'Dimostrazione', 'Management', 'Altro');
+
+create type LavoroNonProgettuale as 
+  enum('Didattica', 'Ricerca', 'Missione', 
+    'Incontro Dipartimentale', 
+    'Incontro Accademico', 'Altro');
+
+create type CausaAssenza as 
+  enum('Chiusura Universitaria', 'Maternita', 'Malattia');
+
+create domain PosInteger as integer check (value >= 0);
+
+create domain StringaM as varchar(100);
+
+create domain NumeroOre as
+  integer check (value >= 0 and value <= 8);
+
+create domain Denaro as
+  real check (value >= 0);
+
+
+
+
+create table Persona (
+  id PosInteger not null,
+  nome StringaM not null,
+  cognome StringaM not null,
+  posizione strutturato not null,
+  stipendio Denaro not null,
+  primary key (id)  
 );
 
-CREATE TABLE Progetto(
-    id NOT NULL,
-    nome CHARACTER varying (100) NOT NULL,
-    inizio DATE,
-    fine DATE,
-    budget Integer default 0,
-    unique (nome),
-    CONSTRAINT chk_inizio_fine CHECK (inizio < fine),
-    PRIMARY KEY (id)
-
+create table Progetto (
+  id PosInteger not null,
+  nome StringaM not null,
+  inizio date not null,
+  fine date not null,
+  budget Denaro not null,
+  primary key (id),
+  unique (nome),
+  check (inizio < fine)
 );
 
-CREATE TABLE WP (
-    proggetto NOT NULL,
-    id NOT NULL,
-    nome CHARACTER varying (100) NOT NULL,
-    inizio DATE,
-    fine DATE,
-    CONSTRAINT chk_inizio_fine CHECK (inizio < fine),
-    UNIQUE (progetto,nome),
-    foreing KEY (progetto) AS reference Progetto (id)
-
+create table WP (
+  progetto PosInteger not null,
+  id PosInteger not null,  
+  nome StringaM not null,
+  inizio date not null,
+  fine date not null,
+  primary key (progetto, id),
+  unique (progetto, nome),
+  check (inizio < fine),  
+  foreign key (progetto) references Progetto(id) deferrable
 );
 
-
-CREATE TABLE AttivitaProgetto (
-id NOT NULL,
-persona NOT NULL,
-proggetto NOT NULL,
-wp NOT NULL,
-giorno DATE,
-OreDurata NumeroOre,
-tipo LavoroProgetto,
-PRIMARY KEY (wp),
-foreingn KEY (persona) AS reference Persona(id),
-foreingn KEY (progetto) AS reference Progetto(id)
-
-
+create table AttivitaProgetto (
+  id PosInteger not null,
+  persona PosInteger not null,
+  progetto PosInteger not null,
+  wp PosInteger not null,
+  giorno date not null,
+  tipo LavoroProgetto not null,
+  oreDurata NumeroOre not null,
+  primary key (id),
+  foreign key (persona) references Persona(id) deferrable,
+  foreign key (progetto, wp) references WP(progetto, id) deferrable
 );
 
-
-CREATE TABLE AttivitaNonProgettuale (
-id NOT NULL,
-persona NOT NULL,
-tipo LavoroProgetto,
-giorno DATE,
-OreDurata NumeroOre,
-foreingn KEY (persona) AS reference Persona(id)
-
+create table AttivitaNonProgettuale (
+  id PosInteger not null,
+  persona PosInteger not null,
+  tipo LavoroNonProgettuale not null,
+  giorno date not null,
+  oreDurata NumeroOre not null,
+  primary key (id),
+  foreign key (persona) references Persona(id) deferrable
 );
 
-
-
-CREATE TABLE Assenza (
-id NOT NULL,
-persona NOT NULL,
-tipo CausaAssenza,
-giorno DATE,
-UNIQUE(persona,giorno),
-foreingn KEY (persona) AS reference Persona(id)
+create table Assenza (
+  id PosInteger not null,
+  persona PosInteger not null,
+  tipo CausaAssenza not null,
+  giorno date not null,
+  primary key (id),
+  unique (persona, giorno),
+  foreign key (persona) references Persona(id) deferrable
 );
+
+commit;

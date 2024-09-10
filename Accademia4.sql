@@ -28,3 +28,32 @@ AND cognome LIKE 'V%'
 SELECT nome
 FROM Progetto
 WHERE fine < CURRENT_DATE
+
+---QUERY 6
+
+SELECT nome
+FROM Progetto
+ORDER BY inizio ASC
+
+---QUERY 7
+
+SELECT nome
+FROM WP
+ORDER BY nome ASC
+
+---QUERY 8
+
+SELECT DISTINCT tipo
+FROM Assenza
+
+---QUERY 9
+
+SELECT DISTINCT tipo
+FROM AttivitàProgetto
+
+--QUERY 10
+
+SELECT DISTINCT giorno
+FROM AttivitaNonProgettuale
+WHERE tipo = 'Didattica'
+ORDER BY giorno ASC
