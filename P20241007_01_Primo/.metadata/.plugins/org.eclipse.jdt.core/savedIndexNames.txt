@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+/home/user/Scrivania/Esercizi/Esercizi/.metadata/.plugins/org.eclipse.jdt.core
-1865797976.index
-2197665391.index
-3852764988.index
