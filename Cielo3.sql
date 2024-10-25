@@ -25,4 +25,12 @@ HAVING avg(dt.som_dur) < avg(v.durataMinuti)
 
 --query 3
 
+WITH tot_voli as (
 
+    SELECT sum(ap.arrivo) as som_arr, ap.codice
+    FROM LuogoAeroporto as la
+    GROUP BY la.citta
+    )
+
+SELECT 
+FROM
