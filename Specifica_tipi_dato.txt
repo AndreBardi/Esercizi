@@ -1,0 +1,17 @@
+Email: Stringa secondo il seguente standard:
+
+            nome.cognome@email.com
+
+Indirizzo: {
+	via: Stringa
+	civico: Stringa ~ [0-9]+(/[a-z]+)?
+	cap: Stringa [0-9]{5}
+	citta: Stringa
+}
+
+TipoAttivita: {visite, pasti, tour, pernottamenti}
+
+
+Mezzo: {treno, aereo, nave, bicicletta, a piedi}
+
+

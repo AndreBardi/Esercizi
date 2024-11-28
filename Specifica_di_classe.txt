@@ -1,0 +1,21 @@
+Specifica di classe Attivita
+
+Operazioni
+n_u_partecipanti(): Intero >= 0
+
+    pre-condizioni:
+        nessuna
+        
+    post-condizioni:
+        result è il numero di link di assocazione ut_att che coinvolgono "this"
+
+
+Specifica di classe Citta
+n_citta_visitate(): Intero >= 0
+
+    pre-condizioni:
+        nessuna
+    post-condizioni:
+        result è il numero di link di assocazione viag_cit che coinvolgono "this"
+
+        
